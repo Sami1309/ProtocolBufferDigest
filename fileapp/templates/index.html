@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <form method="POST" action="/upload" enctype='multipart/form-data'>
+        <div class="form-group">
+            <input type='file' name='inputFile' class="btn btn-default btn-choose">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+
+        </div>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                {% for col in colnames %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for upload in uploads %}
+            <tr>
+                {% for col in colnames %}
+                <td>{{ upload[col] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
